@@ -2975,8 +2975,6 @@
                 timelineProgress.toFixed(4)
             );
         }
-
-        updateIconScrollTilt();
     };
 
 
@@ -3646,8 +3644,6 @@
         initSmoothAnchors();
 
         initScrollReveal();
-
-        cacheIconTiltElements();
 
         initScrollProgress();
 
