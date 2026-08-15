@@ -1575,9 +1575,6 @@ html[data-theme="light"] .site-header.scrolled {
     border-radius:
         180px 180px 35px 35px;
     
-    transform:
-        rotate(5deg);
-    
     box-shadow:
         inset 0 0 70px rgba(47, 140, 255, 0.04),
         0 0 70px rgba(47, 140, 255, 0.05);
