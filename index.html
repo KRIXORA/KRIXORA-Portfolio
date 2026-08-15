@@ -101,10 +101,23 @@
      GitHub uses the inline SVG defined below.
 ====================================================== -->
     
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    
     <!-- Pinned to a specific version instead of @latest — Lucide's own
          docs recommend this, since @latest can silently ship breaking
-         changes and isn't cache-friendly across visits. -->
-    <script src="https://unpkg.com/lucide@1.30.0" defer></script>
+         changes and isn't cache-friendly across visits.
+         
+         jsDelivr is the primary source (faster, multi-region edge
+         network, more consistently available on Indian ISPs than
+         unpkg). If it fails to load for any reason, onerror falls
+         back to unpkg automatically — so icons load even if one
+         CDN is slow, blocked, or briefly down. -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/lucide@1.30.0/dist/umd/lucide.js"
+        defer
+        onerror="var s=document.createElement('script');s.src='https://unpkg.com/lucide@1.30.0';s.defer=true;s.onload=function(){window.lucide&&window.lucide.createIcons&&window.lucide.createIcons();};document.head.appendChild(s);"
+    ></script>
     
     <!-- =====================================================
      FAVICON / BRANDING
