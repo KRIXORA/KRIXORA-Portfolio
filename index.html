@@ -137,33 +137,255 @@
     
     <link rel="manifest" href="site.webmanifest">
     
+<head>
     <!-- =====================================================
-     STYLES
-====================================================== -->
-    
-    <link rel="stylesheet" href="style.css">
-    
+         DOCUMENT
+    ====================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- =====================================================
-     STRUCTURED DATA (JSON-LD)
-     Only fields with real, confirmed values are included.
-     linkedin/instagram/email are intentionally omitted — see
-     PROFILE in script.js, they are not yet configured.
-====================================================== -->
-    
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Krish Parmar",
-            "jobTitle": "Creative Developer",
-            "url": "https://krixora-portfolio.vercel.app/",
-            "image": "https://krixora-portfolio.vercel.app/assets/images/profile/krixora-pfp.png",
-            "sameAs": [
-                "https://github.com/KRIXORA"
-            ]
-        }
+         THEME — FOUC PREVENTION
+         Runs before first paint so the correct theme is applied
+         before the browser renders the page.
+    ====================================================== -->
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem("krixora-theme");
+
+                var theme =
+                    (stored === "dark" || stored === "light")
+                        ? stored
+                        : (
+                            window.matchMedia("(prefers-color-scheme: light)").matches
+                                ? "light"
+                                : "dark"
+                        );
+
+                document.documentElement.dataset.theme = theme;
+            } catch (e) {
+                document.documentElement.dataset.theme = "dark";
+            }
+        })();
     </script>
-    
+
+    <!-- =====================================================
+         PRIMARY SEO
+    ====================================================== -->
+
+    <title>Krish Parmar | KRIXORA — Independent Creative Developer</title>
+
+    <meta
+        name="description"
+        content="Krish Parmar is an independent creative developer and creator of KRIXORA, building modern digital products and interactive web experiences."
+    >
+
+    <meta name="author" content="Krish Parmar">
+
+    <meta
+        name="keywords"
+        content="Krish Parmar, KRIXORA, creative developer, independent developer, frontend developer, web developer, JavaScript developer, web experiences, digital products"
+    >
+
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
+    <meta name="googlebot" content="index, follow, max-image-preview:large">
+
+    <meta name="theme-color" content="#05070d">
+
+    <link
+        rel="canonical"
+        href="https://krixora-portfolio.vercel.app/"
+    >
+
+    <!-- =====================================================
+         GOOGLE SEARCH CONSOLE
+    ====================================================== -->
+
+    <meta
+        name="google-site-verification"
+        content="jDSLpLixrt2HtUDu_5Ao-N-vICyit6tMCqablT30GE0"
+    >
+
+    <!-- =====================================================
+         OPEN GRAPH
+    ====================================================== -->
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:site_name" content="KRIXORA">
+
+    <meta property="og:locale" content="en_US">
+
+    <meta
+        property="og:title"
+        content="Krish Parmar | KRIXORA — Independent Creative Developer"
+    >
+
+    <meta
+        property="og:description"
+        content="Independent creative developer and creator of KRIXORA, building modern digital products and interactive web experiences."
+    >
+
+    <meta
+        property="og:url"
+        content="https://krixora-portfolio.vercel.app/"
+    >
+
+    <meta
+        property="og:image"
+        content="https://krixora-portfolio.vercel.app/assets/images/og-preview.png"
+    >
+
+    <meta property="og:image:width" content="1780">
+
+    <meta property="og:image:height" content="1000">
+
+    <meta
+        property="og:image:alt"
+        content="Krish Parmar — Independent Creative Developer | KRIXORA"
+    >
+
+    <!-- =====================================================
+         TWITTER / X
+    ====================================================== -->
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta
+        name="twitter:title"
+        content="Krish Parmar | KRIXORA — Independent Creative Developer"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Independent creative developer and creator of KRIXORA, building modern digital products and interactive web experiences."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://krixora-portfolio.vercel.app/assets/images/og-preview.png"
+    >
+
+    <meta
+        name="twitter:image:alt"
+        content="Krish Parmar — Independent Creative Developer | KRIXORA"
+    >
+
+    <!-- =====================================================
+         PERFORMANCE — EXTERNAL ORIGINS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        rel="preconnect"
+        href="https://cdn.jsdelivr.net"
+        crossorigin
+    >
+
+    <link
+        rel="dns-prefetch"
+        href="https://unpkg.com"
+    >
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =====================================================
+         LUCIDE ICONS
+         Pinned version for deterministic production builds.
+         jsDelivr is primary; unpkg is fallback.
+    ====================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/lucide@1.30.0/dist/umd/lucide.js"
+        defer
+        onerror="
+            var s = document.createElement('script');
+            s.src = 'https://unpkg.com/lucide@1.30.0';
+            s.defer = true;
+            s.onload = function () {
+                if (
+                    window.lucide &&
+                    window.lucide.createIcons
+                ) {
+                    window.lucide.createIcons();
+                }
+            };
+            document.head.appendChild(s);
+        "
+    ></script>
+
+    <!-- =====================================================
+         FAVICON / BRANDING
+    ====================================================== -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="assets/icons/favicon.png"
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="assets/icons/favicon-16.png"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="assets/icons/favicon-180.png"
+    >
+
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- =====================================================
+         STYLES
+    ====================================================== -->
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- =====================================================
+         STRUCTURED DATA — PERSON
+         Describes the actual individual behind KRIXORA.
+    ====================================================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://krixora-portfolio.vercel.app/#krish-parmar",
+        "name": "Krish Parmar",
+        "url": "https://krixora-portfolio.vercel.app/",
+        "image": "https://krixora-portfolio.vercel.app/assets/images/profile/krixora-pfp.png",
+        "jobTitle": "Independent Creative Developer",
+        "brand": {
+            "@type": "Brand",
+            "name": "KRIXORA",
+            "url": "https://krixora-portfolio.vercel.app/"
+        },
+        "sameAs": [
+            "https://github.com/KRIXORA"
+        ]
+    }
+    </script>
+
 </head>
 
 <body>
